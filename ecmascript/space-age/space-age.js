@@ -3,7 +3,10 @@ class SpaceAge {
     this.seconds = seconds;
   }
   seconds() {
-    this.seconds = this.seconds;
+    return this.seconds;
+  }
+  onEarth() {
+    return parseFloat((this.seconds / 31557600).toFixed(2));
   }
 }
 
