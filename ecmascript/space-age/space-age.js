@@ -1,41 +1,49 @@
+const orbitalPeriodRatio = {
+  earth: 1,
+  mercury: 0.2408467,
+  venus: 0.61519726,
+  mars: 1.8808158,
+  jupiter: 11.862615,
+  saturn: 29.447498,
+  uranus: 84.016846,
+  neptune: 164.79132,
+};
+
 class SpaceAge {
   constructor(seconds) {
     this.seconds = seconds;
-    this.earthPeriod = 31557600;
-    this.mercuryPeriod = 0.2408467;
-    this.venusPeriod = 0.61519726;
-    this.marsPeriod = 1.8808158;
-    this.jupiterPeriod = 11.862615;
-    this.saturnPeriod = 29.447498;
-    this.uranusPeriod = 84.016846;
-    this.neptunePeriod = 164.79132;
   }
-  seconds() {
-    return this.seconds;
+
+  ageOnPlanet(planet) {
+    const earthPeriod = 31557600;
+    const planetPeriod = this.seconds / earthPeriod / orbitalPeriodRatio[planet];
+    const planetAYear = Math.round(planetPeriod * 100) / 100;
+    return planetAYear;
   }
+
   onEarth() {
-    return parseFloat((this.seconds / this.earthPeriod).toFixed(2));
+    return this.ageOnPlanet('earth');
   }
   onMercury() {
-    return parseFloat((this.seconds / this.earthPeriod / this.mercuryPeriod).toFixed(2));
+    return this.ageOnPlanet('mercury');
   }
   onVenus() {
-    return parseFloat((this.seconds / this.earthPeriod / this.venusPeriod).toFixed(2));
+    return this.ageOnPlanet('venus');
   }
   onMars() {
-    return parseFloat((this.seconds / this.earthPeriod / this.marsPeriod).toFixed(2));
+    return this.ageOnPlanet('mars');
   }
   onJupiter() {
-    return parseFloat((this.seconds / this.earthPeriod / this.jupiterPeriod).toFixed(2));
+    return this.ageOnPlanet('jupiter');
   }
   onSaturn() {
-    return parseFloat((this.seconds / this.earthPeriod / this.saturnPeriod).toFixed(2));
+    return this.ageOnPlanet('saturn');
   }
   onUranus() {
-    return parseFloat((this.seconds / this.earthPeriod / this.uranusPeriod).toFixed(2));
+    return this.ageOnPlanet('uranus');
   }
   onNeptune() {
-    return parseFloat((this.seconds / this.earthPeriod / this.neptunePeriod).toFixed(2));
+    return this.ageOnPlanet('neptune');
   }
 }
 
