@@ -8,6 +8,8 @@ class Triangle {
     const b = this.triangle[1];
     const c = this.triangle[2];
 
+    if (a * b * c === 0) throw '길이가 0일수는 없습니다.';
+
     if (a === b && b === c) {
       return 'equilateral';
     } else if (a === b || b === c) {
