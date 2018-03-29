@@ -10,8 +10,10 @@ class Triangle {
 
     if (a === b && b === c) {
       return 'equilateral';
-    } if (a === b || b === c) {
+    } else if (a === b || b === c) {
       return 'isosceles';
+    } else {
+      return 'scalene';
     }
   }
 }
