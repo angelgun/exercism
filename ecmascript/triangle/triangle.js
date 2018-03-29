@@ -1,7 +1,17 @@
 class Triangle {
+  constructor(a, b, c) {
+    this.triangle = [a, b, c].sort();
+  }
+
   kind() {
-    if (this.a === this.b && this.b === this.c) {
+    const a = this.triangle[0];
+    const b = this.triangle[1];
+    const c = this.triangle[2];
+
+    if (a === b && b === c) {
       return 'equilateral';
+    } if (a === b || b === c) {
+      return 'isosceles';
     }
   }
 }
