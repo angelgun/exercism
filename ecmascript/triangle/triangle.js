@@ -1,6 +1,6 @@
 class Triangle {
   constructor(...sides) {
-    this.triangle = [...sides].sort((a, b) => a - b);
+    this.triangle = sides.sort((a, b) => a - b);
   }
 
   kind() {
