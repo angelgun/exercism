@@ -1,24 +1,27 @@
 class Matrix {
   constructor(input) {
-    this.matrix = input;
-    this.rows = [];
-    this.columns = [];
-    const makeRow = this.matrix.split('\n');
-    for (let i = 0, makeRowLen = makeRow.length; i < makeRowLen; i++) {
-      this.rows[i] = makeRow[i].split(' ');
-      for (let j = 0, rowLen = this.rows[i].length; j < rowLen; j++) {
-        const tmp = this.rows[i][j];
-        this.rows[i][j] = Number(this.rows[i][j]);
-        if (this.columns[j] === undefined) {
-          this.columns[j] = [];
-        }
-        this.columns[j].push(Number(tmp));
-      }
+    this.input = input;
+    this.rows = this.getRow();
+    this.columns = this.getColumns();
+  }
+
+  getRow() {
+    const lines = this.input.split('\n');
+    return lines.reduce((rows, row) => {
+      const values = row.split(' ').map(val => Number(val));
+      rows.push(values);
+      return rows;
+    }, []);
+  }
+
+  getColumns() {
+    for (let i = 0, len = this.rows[0].length; i < len; i++) {
+
     }
+    return this.rows[0].map((row, index) => {
+      return this.rows.map(val => val[index]);
+    });
   }
 }
 
 export default Matrix;
-/**
- * 1h 20min
- */

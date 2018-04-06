@@ -1,33 +1,33 @@
 class Triangle {
   constructor(size) {
     this.size = size;
-  }
+    this.rows = [];
+    const baseRow = [1];
+    for (let row = 0; row < size; row++) {
+      const thisRow = [];
+      for (let col = 0; col <= row; col++) {
+        const val = this.getValInLastRow(col - 1) + this.getValInLastRow(col);
+        console.log(row, col, val);
+        thisRow.push(val);
+      }
+      this.lastRow = thisRow;
 
-  get rows() {
-    const triangle = [];
-    for (let i = 1, len = this.size; i <= len; i++) {
-      triangle.push(this.makeRow(i));
+      this.rows.push(this.lastRow);
     }
-    return triangle;
+    // let basicRow = [1];
+    // this.rows = [basicRow];
+    // for (let i = 2, len = this.size; i <= len; i++) {
+    //   const left = [0, ...basicRow];
+    //   const right = [...basicRow, 0];
+    //   basicRow = left.map((val, index) => val + right[index]);
+    //   this.rows.push(basicRow);
+    // }
+    // this.lastRow = basicRow;
   }
 
-  get lastRow() {
-    return this.makeRow(this.size);
-  }
-
-  makeRow(number) {
-    const firstRow = [1];
-    let column = 1;
-    for (let i = 1, len = number; i < len; i++) {
-      column = column * (number - i) / i;
-      firstRow.push(column);
-    }
-    return firstRow;
+  getValInLastRow(col) {
+    return this.lastRow[col] ? this.lastRow[col] : 0;
   }
 }
 
 export default Triangle;
-
-/**
- * 3times
- */

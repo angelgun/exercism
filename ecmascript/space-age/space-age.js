@@ -1,48 +1,56 @@
+function spaceAge(earthYear, period) {
+  return Math.round((earthYear / period) * 100) / 100;
+}
+
+const earthYear = 31557600;
+
 const orbitalPeriodRatio = {
-  earth: 1,
-  mercury: 0.2408467,
-  venus: 0.61519726,
-  mars: 1.8808158,
-  jupiter: 11.862615,
-  saturn: 29.447498,
-  uranus: 84.016846,
-  neptune: 164.79132,
+  Earth: 1,
+  Mercury: 0.2408467,
+  Venus: 0.61519726,
+  Mars: 1.8808158,
+  Jupiter: 11.862615,
+  Saturn: 29.447498,
+  Uranus: 84.016846,
+  Neptune: 164.79132,
 };
+
+// for (let planet in orbitalPeriodRatio) {
+//   console.log(`on${planet}`);
+// }
+
+function spaceAgeX(planet) {
+  return spaceAge(onEarth(), orbitalPeriodRatio[planet]);
+}
 
 class SpaceAge {
   constructor(seconds) {
     this.seconds = seconds;
   }
-
-  spaceAge(earthYear, period) {
-    return Math.round(earthYear / period * 100) / 100;
-  }
-
   onEarth() {
-    return this.spaceAge(this.seconds, 31557600);
+    return spaceAge(this.seconds, 31557600);
   }
   onMercury() {
-    return this.spaceAge(this.onEarth(), orbitalPeriodRatio['mercury']);
+    return spaceAgeX('Mercury');
   }
   onVenus() {
-    return this.spaceAge(this.onEarth(), orbitalPeriodRatio['venus']);
+    return spaceAgeX('Venus');
   }
   onMars() {
-    return this.spaceAge(this.onEarth(), orbitalPeriodRatio['mars']);
+    return spaceAgeX('Mars');
   }
   onJupiter() {
-    return this.spaceAge(this.onEarth(), orbitalPeriodRatio['jupiter']);
+    return spaceAgeX('Jupiter');
   }
   onSaturn() {
-    return this.spaceAge(this.onEarth(), orbitalPeriodRatio['saturn']);
+    return spaceAgeX('Saturn');
   }
   onUranus() {
-    return this.spaceAge(this.onEarth(), orbitalPeriodRatio['uranus']);
+    return spaceAgeX('Uranus');
   }
   onNeptune() {
-    return this.spaceAge(this.onEarth(), orbitalPeriodRatio['neptune']);
+    return spaceAgeX('Neptune');
   }
 }
 
 export default SpaceAge;
-/* 1time */

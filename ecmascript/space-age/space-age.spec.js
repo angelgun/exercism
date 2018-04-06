@@ -20,7 +20,7 @@ describe('Space Age', () => {
   test('age in venus years', () => {
     const age = new SpaceAge(189839836);
     expect(age.onEarth()).toEqual(6.02);
-    expect(age.onVenus()).toEqual(9.78);
+    expect(age.onVenus()).toEqual(9.79);
   });
 
   test('age in mars years', () => {

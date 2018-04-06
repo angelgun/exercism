@@ -7,9 +7,10 @@ function getComplement(nucleotide) {
   };
   return translations[nucleotide];
 }
-function isValidDNA(char) {
-  const validDNAChars = 'CGTA';
-  return validDNAChars.includes(char);
+
+function isValidDNA(strandChar) {
+  const validDNAChars = 'GCTA';
+  return validDNAChars.includes(strandChar);
 }
 
 class Transcriptor {
@@ -22,4 +23,3 @@ class Transcriptor {
 }
 
 export default Transcriptor;
-/* 2times */
