@@ -2,21 +2,23 @@ class Year {
   constructor(year) {
     this.year = year;
   }
-
   isLeap() {
-    if (this.year % 4 === 0) {
-      if (this.year % 100 !== 0) {
-        return true;
-      } else if (this.year % 400 === 0) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
+    return (
+      (this.year % 4 === 0 && this.year % 100 !== 0) || this.year % 400 === 0
+    );
   }
 }
 
 export default Year;
-/* 1times */
+
+// function isInclude(str, pattern) {
+//   return str.indexOf(pattern) !== -1;
+// }
+
+// if (target.indexOf('-') !== -1 && target.indexOf(' ') !== -1 ) {
+
+// }
+
+// if (!isInclude(target, '-') && !isInclude(target, ' ')) {
+
+// }
